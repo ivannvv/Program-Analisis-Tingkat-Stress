@@ -17,6 +17,7 @@ int jumlah_data = 0;
 void flush_buffer() {
     int c;
     while ((c = getchar()) != '\n' && c != EOF);
+}
 
 //bagian Anandita M D
 void cetak_rekomendasi(Mahasiswa m, char* indent) {
