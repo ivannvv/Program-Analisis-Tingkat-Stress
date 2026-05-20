@@ -4,6 +4,21 @@
 
 #define MAX_DATA 100
 
+typedef struct {
+    char nama[50];
+    int semester, opsi_tidur, jam_kuliah_kepanitiaan, rhr, jam_hobi, jam_kultural, total_aktivitas;
+    char punya_hobi, tingkat_stres[10];
+} Mahasiswa;
+
+Mahasiswa data_mhs[MAX_DATA];
+int jumlah_data = 0;
+
+void flush_buffer() {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
+
+
+
 int main() {
     int pilihan;
     do {
