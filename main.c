@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
@@ -16,6 +17,20 @@ int jumlah_data = 0;
 void flush_buffer() {
     int c;
     while ((c = getchar()) != '\n' && c != EOF);
+
+//bagian Anandita M D
+void cetak_rekomendasi(Mahasiswa m, char* indent) {
+    int ada_rek = 0;
+    if (m.opsi_tidur <= 1) { printf("%s- Memperbaiki jam tidur untuk mengembalikan energi.\n", indent); ada_rek = 1;}
+    if (m.total_aktivitas > 55) { printf("%s- Mengurangi aktivitas berlebih dan menerapkan manajemen waktu untuk mencegah burnout.\n", indent); ada_rek = 1; }
+    else if (m.total_aktivitas >= 41) { printf("%s- Mengatur skala prioritas dan manajemen waktu agar tidak kelelahan.\n", indent); ada_rek = 1; }
+    if (m.rhr > 90) { printf("%s- Mencoba olahraga ringan dan latihan pernapasan untuk meredakan kecemasan.\n", indent); ada_rek = 1; }
+    if (tolower(m.punya_hobi) == 'n' || m.jam_hobi < 2) { printf("%s- Meluangkan waktu untuk hobi demi menjaga keseimbangan mental.\n", indent); ada_rek = 1; }
+    if (m.jam_kultural > 15) { printf("%s- Komunikasikan batasan waktu kegiatan kultural agar tidak menambah tekanan mental.\n", indent); ada_rek = 1; }
+    if (strcmp(m.tingkat_stres, "Tinggi") == 0) printf("%s- Sangat disarankan untuk melakukan konsultasi dengan pihak profesional.\n", indent);
+    if (!ada_rek && strcmp(m.tingkat_stres, "Rendah") == 0) printf("%s- Kondisimu sangat baik! Pertahankan pola hidup sehatmu dan jaga terus kesehatannya ya!\n", indent);
+}
+
 
 //bagian Lanang Cakrawala
 void analisa_tingkat_stres() {
