@@ -1,0 +1,39 @@
+void cetak_rekomendasi(Mahasiswa m, char *indent) {
+    int ada_rek = 0;
+
+    if (m.opsi_tidur <= 1) {
+        printf("%s- Memperbaiki jam tidur untuk mengembalikan energi.\n", indent);
+        ada_rek = 1;
+    }
+    if (m.total_aktivitas > 55) {
+        printf("%s- Mengurangi aktivitas berlebih dan menerapkan manajemen\n", indent);
+        printf("%s  waktu untuk mencegah burnout.\n", indent);
+        ada_rek = 1;
+    } else if (m.total_aktivitas >= 41) {
+        printf("%s- Mengatur skala prioritas dan manajemen waktu agar\n", indent);
+        printf("%s  tidak kelelahan.\n", indent);
+        ada_rek = 1;
+    }
+    if (m.rhr > 90) {
+        printf("%s- Mencoba olahraga ringan dan latihan pernapasan\n", indent);
+        printf("%s  untuk meredakan kecemasan.\n", indent);
+        ada_rek = 1;
+    }
+    if (tolower(m.punya_hobi) == 'n' || m.jam_hobi < 2) {
+        printf("%s- Meluangkan waktu untuk hobi demi menjaga\n", indent);
+        printf("%s  keseimbangan mental.\n", indent);
+        ada_rek = 1;
+    }
+    if (m.jam_kultural > 15) {
+        printf("%s- Komunikasikan batasan waktu kegiatan kultural\n", indent);
+        printf("%s  agar tidak menambah tekanan mental.\n", indent);
+        ada_rek = 1;
+    }
+    if (strcmp(m.tingkat_stres, "Tinggi") == 0)
+        printf("%s- Sangat disarankan konsultasi dengan profesional\n"
+               "%s  kesehatan mental atau hubungi 119 ext 8.\n", indent, indent);
+
+    if (!ada_rek && strcmp(m.tingkat_stres, "Rendah") == 0)
+        printf("%s- Kondisimu sangat baik! Pertahankan pola hidup\n"
+               "%s  sehatmu ya!\n", indent, indent);
+}
