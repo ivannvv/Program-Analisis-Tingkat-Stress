@@ -97,6 +97,24 @@ void analisa_tingkat_stres() {
     printf("=================================================\n");
     data_mhs[jumlah_data++] = m;
 }
+
+// Start Bagian Wibi
+void lihat_semua_data() {
+    if (jumlah_data == 0) { printf("\n[Sistem] Belum ada data mahasiswa yang dimasukkan.\n"); return; }
+    printf("\n========================================================================================================================\n                                          DAFTAR DATA ANALISIS & REKOMENDASI STRES                                      \n========================================================================================================================\n");
+    for (int i = 0; i < jumlah_data; i++) {
+        char txt_tidur[15], txt_hobi[20];
+        strcpy(txt_tidur, (data_mhs[i].opsi_tidur == 0) ? "< 6 Jam" : (data_mhs[i].opsi_tidur == 1) ? "6 Jam" : (data_mhs[i].opsi_tidur == 2) ? "7-9 Jam" : "> 10 Jam");
+        if (tolower(data_mhs[i].punya_hobi) == 'y') sprintf(txt_hobi, "Ada (%d jam/wk)", data_mhs[i].jam_hobi); else strcpy(txt_hobi, "Tidak Ada");
+
+        printf("Data ke-%d: %s (Semester %d)\n------------------------------------------------------------------------------------------------------------------------\n", i + 1, data_mhs[i].nama, data_mhs[i].semester);
+        printf("[Indikator] | Tidur: %-8s | Total Aktivitas: %-3d jam/wk | RHR: %-3d bpm | Hobi: %-13s | Kultural: %-2d jam/wk\n", txt_tidur, data_mhs[i].total_aktivitas, data_mhs[i].rhr, txt_hobi, data_mhs[i].jam_kultural);
+        printf("[Status]    | Tingkat Stres: %s\n[Saran]     | Rekomendasi untuk kamu:\n", data_mhs[i].tingkat_stres);
+        cetak_rekomendasi(data_mhs[i], "              ");
+        printf("========================================================================================================================\n");
+    }
+}
+
 //bagian dayson
 
 void statistik() {
